@@ -1,0 +1,100 @@
+<router-outlet></router-outlet>
+<h1 class="bg-primary">Welcome to angular</h1>
+<button mat-flat-button color="warn">Warn</button>
+<new-lists></new-lists>
+
+<div *ngIf="a else c then b">If Block executed</div>
+<ng-template #b>Then Block executed</ng-template>
+<ng-template #c>else Block executed</ng-template>
+<div class="bg" *ngIf="successmsg || isAdmin else fail">User Added Successfully</div>
+<ng-template  #fail><p class="bgn">User not added</p></ng-template>
+
+<ul>
+    <li *ngFor="let c of contacts; index as i; first as f; last as l; even as e; odd as o;">
+        <div *ngIf="f else xyz" style="color:red">
+        {{i+1}} {{c.fname}}  {{c.lname}}</div>
+        <ng-template #xyz><div *ngIf="l else abc" style="color:green">{{i+1}} {{c.fname}} {{c.lname}}</div>
+            <ng-template #abc>{{i+1}} {{c.fname}} {{c.lname}}</ng-template>
+            </ng-template>
+    </li>
+</ul>
+
+<table>
+    <tr *ngFor="let z of contacts; index as i; even as e; odd as o">
+        <td *ngIf="e" style="background-color:rgb(228, 97, 118)">{{i+1}} {{z.fname}} {{z.lname}} {{z.id}}</td>
+        <td *ngIf="o" style="background-color:rgb(167, 197, 172)">{{i+1}} {{z.fname}} {{z.lname}} {{z.id}}</td>
+    </tr>
+</table>
+
+<div [ngSwitch] = "category">
+    <div *ngSwitchCase= "'clothing'">Dresses are Available</div>
+    <div *ngSwitchCase= "'electronics'"> Mobiles are Available</div>
+    <div *ngSwitchDefault>No Such Item</div>
+</div>
+
+<div [ngStyle]="{'background-color':'green', 'color':'white'}">Hello! Good Eve!</div>
+<br>
+<div [ngStyle]="{'background-color':bgc, 'color':col}">Welocme to Angular Design</div>
+
+<br>
+<div [ngStyle]="{'color':isAdmin==true? 'brown':'green'}">Welcome</div>
+
+<div [ngClass]="'c1'">Class 1</div>
+<div [ngClass]="'c2'">Class 2</div>
+<div [ngClass]="'c1 c2'">This is combined Class</div>
+<div [ngClass]= "styleclass">class 3</div>
+
+<div [ngClass]="isAdmin==true?'c1':'c2'">Merry Christmas</div>
+<div [ngClass]="{c1:true, c2:true, c3:true}">all Styles</div>
+
+<div>{{heading}} {{count}}</div>
+<div>{{obj}}</div> <div>{{obj.age}}</div>
+<div>{{obj.name}}</div>
+
+<div *ngFor="let c of contacts">{{c.fname}} {{c.lname}}</div>
+<table>
+    <tr><th>Contact Id</th> <th>First Name</th> <th>Last Name</th></tr>
+    <tr *ngFor="let c of contacts"> <td [title]="c.id">{{c.id}}</td><td [title]="c.fname">{{c.fname}}</td><td [title]="c.lname">{{c.lname}}</td></tr>
+</table>
+
+<h1 style="background-color:pink; width:300px;border:1px solid brown;" [innerHTML]="Info"></h1>
+
+<h3 [style.color]="colo">Welcome</h3>
+<br>
+
+<table style="background-color:rgb(133, 241, 31)">
+    <tr><td>Id</td><td>Name</td> <td>Email</td></tr>
+    <tr><td [attr.colspan]="2">ABC</td> <td>rajesh@gmail.com</td></tr>
+</table>
+
+<button (click)="sayHello()">CLICK1</button>
+<div (mouseover)="highlight()">HOVER</div>
+<input type="text" (focus)="box()">
+
+<input [(ngModel)]="username">
+<div style="color:rgb(190, 45, 106)">{{username}}</div>
+
+<div>{{word1 | uppercase}}</div>
+<p>{{word2 | lowercase}}</p>
+<h1>{{today |date}}</h1>
+<h2>{{jsondata | json }}</h2>
+<h3>{{Curr | currency}}</h3>
+<h4>{{percentage | percent}}</h4>
+
+<div>{{Curr | currency:'usd'}}</div>
+<div>{{Curr | currency:'inr'}}</div>
+<div>{{Curr | currency:'USD'}}</div>
+<div>{{Curr | currency:'INR'}}</div>
+<p>{{today | date:'full' |uppercase}}</p>
+<div>{{percentage | percent:'3.2-2'}}</div>
+
+<div>{{user.city}}</div>
+<div>{{user.city | highlight: user.city}}</div>
+
+
+<img [src]="imgUrl"/>
+
+
+
+<new-lists></new-lists>
+
